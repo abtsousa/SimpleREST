@@ -38,6 +38,18 @@ Test the API by sending a GET request to the IP address of the live server (e.g.
 curl -i http://127.0.0.1:8000/suggest_app
 ```
 
+You should get a ```HTTP/1.1 200 OK``` header followed by a JSON response, such as this:
+
+```text
+HTTP/1.1 200 OK
+date: (...)
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"app_name":"Lords Mobile: Kingdom Wars"}%
+```
+
 ## Full documentation
 
 While running the server the documentation can be checked at /docs:

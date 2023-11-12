@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from RandomAppAPI.models.appinfo import AppInfo
+from RandomAppAPI.models.appinfo import AppInfo, AppsList
+from pydantic import ValidationError
 import random
 
 
@@ -13,17 +14,15 @@ APPS_LIST = [
 router = APIRouter()
 
 
-def get_random_app_name(apps: list[str] = APPS_LIST) -> str:
+def get_random_app_name(apps: AppsList = AppsList(app_name_list=APPS_LIST)) -> str:
     """
     Auxiliary method that returns a random app name from a list of app name strings.
 
     Args:
-        apps (List[str]): list of app names to choose from. (optional)
+        apps (AppsList): list of app names to choose from. (optional)
                           Defaults to the hard-coded list APPS_LIST.
     """
-    if not isinstance(apps, list) or not all(isinstance(x, str) for x in apps):
-        raise TypeError("Input must be a list of strings")
-    return random.choice(apps)
+    return random.choice(apps.app_name_list)
 
 
 @router.get("/suggest_app", response_model=AppInfo, summary="Suggest an app")
@@ -33,5 +32,5 @@ async def suggest_app() -> AppInfo:
     """
     try:
         return AppInfo(app_name=get_random_app_name())
-    except TypeError as e:  # Check for invalid list and return 400 Bad Request
-        raise HTTPException(status_code=400, detail=str(e))
+    except (AttributeError, ValidationError) as e:  # Check for invalid list and return 400 Bad Request
+        raise HTTPException(status_code=400, detail=": ".join([type(e).__name__,str(e)]))
