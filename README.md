@@ -1,7 +1,10 @@
 # Random App API
 
 <!--toc:start-->
+
 - [Setup](#setup)
+- [Run](#Run)
+- [Test](#Test)
 <!--toc:end-->
 
 ## Setup
@@ -38,7 +41,7 @@ Test the API by sending a GET request to the IP address of the live server (e.g.
 curl -i http://127.0.0.1:8000/suggest_app
 ```
 
-You should get a ```HTTP/1.1 200 OK``` header followed by a JSON response, such as this:
+You should get a `HTTP/1.1 200 OK` header followed by a JSON response, such as this:
 
 ```text
 HTTP/1.1 200 OK
