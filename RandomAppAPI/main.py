@@ -11,7 +11,8 @@ __version__ = "0.1.0"
 description = """
 RandomApp API is a simple API that suggests an app from a list of available apps.
 
-Currently supports suggesting one of the following three apps: 
+Currently supports suggesting one of the following three apps:
+
     - "Evony: The King's Return"
     - "Lords Mobile: Kingdom Wars"
     - "Clash of Clans"

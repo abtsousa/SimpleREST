@@ -1,11 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class AppInfo(BaseModel):
     """
     A simple app info model.
-
-    Parameters:
-        app_name (str): The app's name.
     """
-    app_name: str
+    app_name: str = Field(description="The app's name.")
