@@ -39,7 +39,7 @@ uvicorn RandomAppAPI.main:app --reload
 
 ## Test
 
-Test the API by sending a GET request to the IP address of the live server (e.g. cURL):
+In a separate terminal window test the API by sending a GET request to the IP address of the live server (e.g. cURL):
 
 ```bash
 curl -i http://127.0.0.1:8000/suggest_app
