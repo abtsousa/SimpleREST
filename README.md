@@ -9,7 +9,11 @@
 
 ## Setup
 
-1. Clone this repository to the directory of your choice.
+1. Clone this repository to the directory of your choice (e.g. Github CLI):
+
+```bash
+gh repo clone abtsousa/SimpleREST
+```
 
 2. On that directory setup your Python environment (e. g. with Pyenv on Linux):
 
