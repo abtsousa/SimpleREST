@@ -13,7 +13,7 @@ APPS_LIST = [
 router = APIRouter()
 
 
-def get_random_app_name(apps=APPS_LIST) -> str:
+def get_random_app_name( apps: list[str] = APPS_LIST ) -> str:
     """
     Auxiliary method that returns a random app name from a list of app name strings.
 
@@ -24,6 +24,9 @@ def get_random_app_name(apps=APPS_LIST) -> str:
     return random.choice(apps)
 
 
-@router.get("/", response_model=AppInfo)
+@router.get("/suggest_app", response_model=AppInfo, summary="Suggest an app")
 async def suggest_app() -> AppInfo:
+    """
+    Suggests a random app from the available apps list in the store.
+    """
     return AppInfo(app_name=get_random_app_name())
