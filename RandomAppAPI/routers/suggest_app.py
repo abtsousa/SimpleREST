@@ -33,5 +33,5 @@ async def suggest_app() -> AppInfo:
     """
     try:
         return AppInfo(app_name=get_random_app_name())
-    except TypeError as e:  # Check invalid input and return 400 Bad Request
+    except TypeError as e:  # Check for invalid list and return 400 Bad Request
         raise HTTPException(status_code=400, detail=str(e))
